@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+    <script src="promise.min.js"></script>
+    <script src="fetch.umd.js"></script>      
+    <script src="fetch.js"></script>
+    <style>
+        form{
+            margin:5%;
+            padding:3%;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Lyrics of a song</h1>
+        <p class="lead">This is a simple program, that finds the lyrics of a given song.<br>This is attempted to understand how to program asynchronously using fetch in Javascript.</p>
+        <hr>
+    </div>
+
+    <form id="test_form" onsubmit="return checkCompletionAndGet(this)">
+        <span id="error"></span>
+        <div class="form-row" autocomplete="off">            
+            <div class="form-group col-md-4">                
+                <label for="artist">Enter Artist</label>
+                <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist name">
+            </div>
+                          
+            <div class="form-group col-md-4">      
+                <label for="title">Enter Song Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Song Title">
+            </div>
+        </div>
+        <div class="form-row"> 
+            <button type="submit" id="generate" class="btn btn-primary" style="margin:10px">SHOW</button>  
+            <button type="clear" id="clear" class="btn btn-primary" onclick="clearInput()" style="margin:10px">CLEAR</button>
+        </div>
+    </form>
+
+    <div class="card" id="card" style="width: auto; margin:30px; display:none">
+        <div class="card-body">            
+          <a href="#" class="card-link btn btn-primary" id="downloadLink">DOWNLOAD</a>
+          <button type="clear" id="clear" class="btn btn-primary" onclick="showForm()" style="margin:10px">TRY ANOTHER SONG</button>
+          <h5 class="card-title" id="cardTitle"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="subTitle"></h6>
+          <p class="card-text" id="lyrics"></p>
+        </div>
+    </div>
+    
+</body>
+</html>
